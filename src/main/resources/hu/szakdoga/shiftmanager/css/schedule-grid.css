@@ -1,0 +1,281 @@
+/* Brigádnapló modern JavaFX CSS stíluslap */
+
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #f7fafc;
+}
+
+/* Bal oldali sötétkék menüsáv (Sidebar) */
+.sidebar {
+    -fx-background-color: #1a2536;
+    -fx-padding: 20 12 20 12;
+    -fx-min-width: 220px;
+    -fx-pref-width: 230px;
+}
+
+.sidebar-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 10;
+}
+
+.sidebar-separator {
+    -fx-background-color: #2d3748;
+    -fx-padding: 0 0 10 0;
+}
+
+.sidebar-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e0;
+    -fx-font-size: 14px;
+    -fx-alignment: BASELINE_LEFT;
+    -fx-padding: 12 16 12 16;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-weight: 500;
+}
+
+.sidebar-btn:hover {
+    -fx-background-color: #2d3748;
+    -fx-text-fill: #ffffff;
+}
+
+.active-btn {
+    -fx-background-color: #2b6cb0;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+
+/* Felső sáv (Header Area) */
+.month-header {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a202c;
+}
+
+.month-subtext {
+    -fx-font-size: 13px;
+    -fx-text-fill: #718096;
+}
+
+/* Navigációs gombok */
+.nav-btn {
+    -fx-background-color: #edf2f7;
+    -fx-text-fill: #2d3748;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 6 12 6 12;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-border-color: #cbd5e0;
+    -fx-border-radius: 6;
+}
+
+.nav-btn:hover {
+    -fx-background-color: #e2e8f0;
+}
+
+/* Akciógombok */
+.action-btn-primary {
+    -fx-background-color: #3182ce;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 9 16 9 16;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.action-btn-primary:hover {
+    -fx-background-color: #2b6cb0;
+}
+
+.action-btn-success {
+    -fx-background-color: #38a169;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 9 16 9 16;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.action-btn-success:hover {
+    -fx-background-color: #2f855a;
+}
+
+.action-btn-secondary {
+    -fx-background-color: #4a5568;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 9 16 9 16;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.action-btn-secondary:hover {
+    -fx-background-color: #2d3748;
+}
+
+/* Beosztás Táblázat */
+.schedule-table {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.schedule-table .column-header-background {
+    -fx-background-color: #edf2f7;
+    -fx-border-color: transparent transparent #cbd5e0 transparent;
+}
+
+.schedule-table .column-header {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #4a5568;
+    -fx-alignment: CENTER;
+}
+
+.table-row-cell {
+    -fx-border-color: transparent transparent #f0f4f8 transparent;
+    -fx-cell-size: 42px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #ffffff;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #fbfcfd;
+}
+
+/* Műszak Címkék (Badges) */
+.badge-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER;
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-background-radius: 6;
+    -fx-text-fill: #ffffff;
+}
+
+.badge-day {
+    -fx-background-color: #F57C00;
+}
+
+.badge-night {
+    -fx-background-color: #1976D2;
+}
+
+.badge-rest {
+    -fx-background-color: #4CAF50;
+}
+
+.badge-leave {
+    -fx-background-color: #9C27B0;
+}
+
+.badge-sick {
+    -fx-background-color: #E53935;
+}
+
+.badge-unpaid {
+    -fx-background-color: #757575;
+}
+
+/* Eltelt napok és a (szimulált) mai nap kiemelése a beosztásban */
+.schedule-table .column-header.day-past .label {
+    -fx-text-fill: #a0aec0;
+}
+
+.table-row-cell .table-cell.day-past {
+    -fx-background-color: #e2e8f0;
+}
+
+.table-cell.day-past .badge-label {
+    -fx-opacity: 0.4;
+}
+
+.schedule-table .column-header.day-today {
+    -fx-background-color: #d69e2e;
+}
+
+.schedule-table .column-header.day-today .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell .table-cell.day-today {
+    -fx-background-color: #fefcbf;
+    -fx-border-color: transparent #d69e2e transparent #d69e2e;
+    -fx-border-width: 0 3 0 3;
+}
+
+.legend-past {
+    -fx-background-color: #e2e8f0;
+    -fx-border-color: #a0aec0;
+    -fx-border-width: 1;
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+}
+
+.legend-today {
+    -fx-background-color: #fefcbf;
+    -fx-border-color: #d69e2e;
+    -fx-border-width: 0 3 0 3;
+}
+
+.legend-swatch {
+    -fx-min-width: 18px;
+    -fx-min-height: 14px;
+    -fx-max-width: 18px;
+    -fx-max-height: 14px;
+}
+
+/* Demó helyzet sáv a fejlécben */
+.scenario-banner {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #744210;
+    -fx-background-color: #fefcbf;
+    -fx-background-radius: 4;
+    -fx-padding: 2 8 2 8;
+}
+
+.scenario-info-btn {
+    -fx-background-color: #ecc94b;
+    -fx-text-fill: #1a202c;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 8 2 8;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+/* Alsó Jelmagyarázat (Legend Bar) */
+.legend-bar {
+    -fx-background-color: #ffffff;
+    -fx-padding: 12 16 12 16;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.legend-dot {
+    -fx-min-width: 14px;
+    -fx-min-height: 14px;
+    -fx-max-width: 14px;
+    -fx-max-height: 14px;
+    -fx-background-radius: 7;
+}
+
+.status-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #4a5568;
+}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.szakdoga.shiftmanager.controller.ScheduleGridController"
+            stylesheets="@../css/schedule-grid.css"
+            prefWidth="1280" prefHeight="780">
+
+    <!-- Bal oldali navigációs menüsáv (Sidebar) -->
+    <left>
+        <VBox spacing="10" styleClass="sidebar">
+            <Label text="Brigádnapló" styleClass="sidebar-title"/>
+            <Separator styleClass="sidebar-separator"/>
+            
+            <Button text="📅  Beosztás" onAction="#handleNavSchedule" styleClass="sidebar-btn, active-btn" maxWidth="Infinity"/>
+            <Button text="👥  Éves nyilvántartás" onAction="#handleNavAnnual" styleClass="sidebar-btn" maxWidth="Infinity"/>
+            <Button text="📊  Havi pótlékok" onAction="#handleNavStats" styleClass="sidebar-btn" maxWidth="Infinity"/>
+            <Button text="🎬  Demó helyzetek" onAction="#handleNavScenarios" styleClass="sidebar-btn" maxWidth="Infinity"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </left>
+
+    <!-- Központi munkaterület (Fejléc + Beosztás Táblázat + Jelmagyarázat) -->
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="20" right="25" bottom="20" left="25"/>
+            </padding>
+
+            <!-- Felső sáv: Hónap navigáció és Akciógombok -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <VBox spacing="3">
+                    <Label fx:id="monthTitleLabel" text="2025. Október" styleClass="month-header"/>
+                    <Label fx:id="viewSubtitleLabel" text="Aktuális nézet: 4 Műszakos Folytonos Munkarend (N–É–P–P rotáció)" styleClass="month-subtext"/>
+                    <HBox fx:id="scenarioBannerBox" spacing="6" alignment="CENTER_LEFT" visible="false" managed="false">
+                        <Label fx:id="scenarioBannerLabel" styleClass="scenario-banner"/>
+                        <Button text="ℹ Leírás" onAction="#handleShowScenarioInfo" styleClass="scenario-info-btn"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Hónap léptetők -->
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <padding><Insets left="15"/></padding>
+                    <Button text="◀" onAction="#handlePrevMonth" styleClass="nav-btn"/>
+                    <Button text="Ma" onAction="#handleCurrentMonth" styleClass="nav-btn"/>
+                    <Button text="▶" onAction="#handleNextMonth" styleClass="nav-btn"/>
+                </HBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Fő műveleti gombok -->
+                <Button text="⚡ Automatikus Tervezés" onAction="#handleAutoSchedule" styleClass="action-btn-primary"/>
+                <Button text="💾 Mentés" onAction="#handleSave" styleClass="action-btn-success"/>
+                <Button text="📄 PDF export" onAction="#handleExportPdf" styleClass="action-btn-primary"/>
+            </HBox>
+
+            <!-- Dinamikusan felépített beosztási táblázat -->
+            <TableView fx:id="scheduleTable" VBox.vgrow="ALWAYS" styleClass="schedule-table">
+                <placeholder>
+                    <Label text="Nincsenek megjeleníthető dolgozói adatok."/>
+                </placeholder>
+            </TableView>
+
+            <!-- Alsó jelmagyarázat és állapotsáv -->
+            <HBox spacing="20" alignment="CENTER_LEFT" styleClass="legend-bar">
+                <Label text="Jelmagyarázat:" style="-fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+
+                <HBox spacing="6" alignment="CENTER">
+                    <Region styleClass="legend-dot, badge-day"/>
+                    <Label text="Nappal (06-18) [N]"/>
+                </HBox>
+
+                <HBox spacing="6" alignment="CENTER">
+                    <Region styleClass="legend-dot, badge-night"/>
+                    <Label text="Éjszaka (18-06) [É]"/>
+                </HBox>
+
+                <HBox spacing="6" alignment="CENTER">
+                    <Region styleClass="legend-dot, badge-rest"/>
+                    <Label text="Pihenőnap [P]"/>
+                </HBox>
+
+                <HBox spacing="6" alignment="CENTER">
+                    <Region styleClass="legend-dot, badge-leave"/>
+                    <Label text="Szabadság [SZ]"/>
+                </HBox>
+
+                <HBox spacing="6" alignment="CENTER">
+                    <Region styleClass="legend-dot, badge-sick"/>
+                    <Label text="Beteg [B]"/>
+                </HBox>
+
+                <HBox spacing="6" alignment="CENTER">
+                    <Region styleClass="legend-dot, badge-unpaid"/>
+                    <Label text="Fiz. nélküli [F]"/>
+                </HBox>
+
+                <HBox spacing="6" alignment="CENTER">
+                    <Region styleClass="legend-swatch, legend-past"/>
+                    <Label text="Eltelt nap"/>
+                </HBox>
+
+                <HBox spacing="6" alignment="CENTER">
+                    <Region styleClass="legend-swatch, legend-today"/>
+                    <Label text="Mai (szimulált) nap"/>
+                </HBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="statusLabel" text="Kész." styleClass="status-label"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
